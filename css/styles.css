@@ -14,9 +14,9 @@ html, body {
 }
 
 body {
-    font-family: "Nunito", sans-serif;
+    font-family: "Trebuchet MS", sans-serif;
     text-align: center;
-    background: rgba(235, 235, 235, 0.9);
+    background: rgb(0, 175, 166);
 }
 
 header {
@@ -87,11 +87,16 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-    background: rgba(245, 245, 245, 0.9);
+    background: rgba(202, 202, 202, 0.35);
     border-radius: 0.25em;
     border: 1px solid rgba(50, 50, 50, 0.3);
     transition: .4s ease-out;
     overflow: hidden;
+}
+
+.card:hover, .card:focus {
+    transform: scale(1.15);
+    box-shadow: 0 12px 16px -6px black;
 }
 
 .card-img {
@@ -140,10 +145,12 @@ header h1 {
     min-height: 415px;
     margin: 10px auto auto;
     padding-bottom: 15px;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(0, 175, 166);
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
     transition: .4s ease-out;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .modal-close-btn {
@@ -188,7 +195,7 @@ header h1 {
     max-width: 420px;
     padding: 10px 15px 15px;;
     margin: 10px auto auto;
-    background: rgba(255, 255, 255, 1);
+    background: rgb(0, 175, 166);
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
 }
@@ -248,7 +255,7 @@ header h1 {
 @media (min-width: 1024px) {
 
     .card:hover {
-        background: rgba(255, 255, 255, 1);
+        background: rgb(0, 180, 171);
         border: 1px solid rgba(50, 50, 50, 0.9);
     }
 
