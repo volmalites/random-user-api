@@ -43,7 +43,7 @@ function insertIntoGallery(data) {
 
 async function fetchUsers() {
   try {
-    return await fetch('https://randomuser.me/api/?results=12', {
+    return await fetch('https://randomuser.me/api/?results=12&nat=US', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -65,12 +65,13 @@ async function fetchUsers() {
 function openCard(userData, index) {
   index = (index < 0) ? userData.length - 1 : index; // Prevent errors when reaching beginning of user data
   index = (index > (userData.length - 1)) ? 0 : index; // Prevent errors when reaching end of user data
+  let modalContent = '';
 
   if (document.contains(document.querySelector(".modal-container"))) {
     document.querySelector(".modal-container").remove();
   }
 
-  const modalContent = `
+  modalContent = `
     <div class="modal-container">
       <div class="modal">
         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
@@ -81,7 +82,7 @@ function openCard(userData, index) {
           <p class="modal-text cap">${userData[index].location.city}</p>
           <hr>
           <p class="modal-text">${formatNumber(userData[index].cell)}</p>
-          <p class="modal-text">${userData[index].location.street.number} ${userData[index].location.street.name}, ${userData[index].location.city}, ${userData[index].location.state}, ${userData[index].location.city}, ${userData[index].location.postcode}</p>
+          <p class="modal-text">${userData[index].location.street.number} ${userData[index].location.street.name}, ${userData[index].location.city}, ${userData[index].location.state}, ${userData[index].location.postcode}</p>
           <p class="modal-text">Birthday: ${new Date(userData[index].dob.date).toLocaleDateString('en-US')}</p>
         </div>
       </div>
@@ -137,7 +138,11 @@ function formatNumber(number) {
 
 function search(value, data) {
   const results = data.filter(user => user.name.first.concat(user.name.last).toLowerCase().includes(value.toLowerCase()));
-  insertIntoGallery(results);
+  if (results.length > 0) {
+    insertIntoGallery(results);
+  } else {
+    document.getElementById('gallery').innerHTML = '<h1>NO RESULTS FOUND</h1>';
+  }
 }
 
 /**
